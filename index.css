@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ============================================================================
+   AQI-Adaptive Theme Engine:
+   - Good / Satisfactory (NAQI 0–100): Clean Mint-Ivory #F1FBF6 + Emerald-Teal
+   - Moderate (NAQI 101–200): Caution Haze Warm Sand #FCF8EF + Golden Amber
+   - Poor / Very Poor / Severe (NAQI > 200): Bad Air Alert Obsidian #0C0706 + Crimson Smog Glow
+   ============================================================================ */
+
+/* 1. Good / Satisfactory Air Quality (NAQI 0-100) */
+:root,
+[data-aqi-theme="good"] {
+  --vayu-bg: #f1fbf6;
+  --vayu-bg-glow: radial-gradient(ellipse 80% 45% at 50% 0%, rgba(16, 185, 129, 0.08), transparent 70%);
+  --vayu-surface: #ffffff;
+  --vayu-surface-muted: #e3f5ec;
+  --vayu-border: #bfe3d1;
+  --vayu-ink: #0a2e20;
+  --vayu-ink-muted: #386352;
+  --vayu-accent: #0d9488;
+  --vayu-accent-hover: #0f766e;
+  --vayu-accent-ink: #ffffff;
+  --vayu-hero-from: #064e3b;
+  --vayu-hero-to: #0d9488;
+  --vayu-hero-ink: #f0fdf9;
+  --vayu-hero-muted: #99f6e4;
+  --vayu-hero-border: rgba(153, 246, 228, 0.28);
+  --vayu-ticker-bg: #083328;
+  --vayu-ticker-border: #115e4b;
+}
+
+/* 2. Moderate Air Quality (NAQI 101-200) */
+[data-aqi-theme="moderate"] {
+  --vayu-bg: #fcf8ef;
+  --vayu-bg-glow: radial-gradient(ellipse 80% 45% at 50% 0%, rgba(245, 158, 11, 0.1), transparent 70%);
+  --vayu-surface: #ffffff;
+  --vayu-surface-muted: #f7eedb;
+  --vayu-border: #ead5af;
+  --vayu-ink: #2c1e08;
+  --vayu-ink-muted: #705428;
+  --vayu-accent: #d97706;
+  --vayu-accent-hover: #b45309;
+  --vayu-accent-ink: #ffffff;
+  --vayu-hero-from: #78350f;
+  --vayu-hero-to: #d97706;
+  --vayu-hero-ink: #fffbeb;
+  --vayu-hero-muted: #fde68a;
+  --vayu-hero-border: rgba(253, 230, 138, 0.28);
+  --vayu-ticker-bg: #5c280a;
+  --vayu-ticker-border: #853c12;
+}
+
+/* 3. Poor / Very Poor / Severe Air Quality (NAQI > 200) — Obsidian Crimson Dark Canvas */
+[data-aqi-theme="high"] {
+  --vayu-bg: #0c0706;
+  --vayu-bg-glow: radial-gradient(ellipse 85% 48% at 50% 0%, rgba(234, 88, 12, 0.2), rgba(220, 38, 38, 0.1) 48%, transparent 78%);
+  --vayu-surface: #160d0b;
+  --vayu-surface-muted: #241310;
+  --vayu-border: #48211b;
+  --vayu-ink: #fef2f2;
+  --vayu-ink-muted: #e5a9a2;
+  --vayu-accent: #dc2626;
+  --vayu-accent-hover: #b91c1c;
+  --vayu-accent-ink: #ffffff;
+  --vayu-hero-from: #5c100e;
+  --vayu-hero-to: #991b1b;
+  --vayu-hero-ink: #fef2f2;
+  --vayu-hero-muted: #fecaca;
+  --vayu-hero-border: rgba(254, 202, 202, 0.26);
+  --vayu-ticker-bg: #2a0b09;
+  --vayu-ticker-border: #5c1914;
+}
+
+/* Explicit Dark Mode Override for Good & Moderate */
+html.dark [data-aqi-theme="good"],
+.dark[data-aqi-theme="good"] {
+  --vayu-bg: #07130f;
+  --vayu-bg-glow: radial-gradient(ellipse 80% 45% at 50% 0%, rgba(13, 148, 136, 0.14), transparent 72%);
+  --vayu-surface: #0d1f18;
+  --vayu-surface-muted: #142d24;
+  --vayu-border: #234b3d;
+  --vayu-ink: #ecfdf5;
+  --vayu-ink-muted: #9dd4be;
+  --vayu-accent: #14b8a6;
+  --vayu-accent-hover: #0d9488;
+  --vayu-accent-ink: #042f2e;
+  --vayu-hero-from: #064e3b;
+  --vayu-hero-to: #0f766e;
+  --vayu-hero-ink: #f0fdf9;
+  --vayu-hero-muted: #99f6e4;
+  --vayu-hero-border: rgba(153, 246, 228, 0.24);
+  --vayu-ticker-bg: #062119;
+  --vayu-ticker-border: #124032;
+}
+
+html.dark [data-aqi-theme="moderate"],
+.dark[data-aqi-theme="moderate"] {
+  --vayu-bg: #120e07;
+  --vayu-bg-glow: radial-gradient(ellipse 80% 45% at 50% 0%, rgba(217, 119, 6, 0.14), transparent 72%);
+  --vayu-surface: #1c160b;
+  --vayu-surface-muted: #2a2010;
+  --vayu-border: #4a381d;
+  --vayu-ink: #fffbeb;
+  --vayu-ink-muted: #dec48e;
+  --vayu-accent: #f59e0b;
+  --vayu-accent-hover: #d97706;
+  --vayu-accent-ink: #271702;
+  --vayu-hero-from: #78350f;
+  --vayu-hero-to: #b45309;
+  --vayu-hero-ink: #fffbeb;
+  --vayu-hero-muted: #fde68a;
+  --vayu-hero-border: rgba(253, 230, 138, 0.24);
+  --vayu-ticker-bg: #241708;
+  --vayu-ticker-border: #4a2f11;
+}
+
+/* Explicit Light Mode Override when user forces Light even during NAQI > 200 */
+html.force-light [data-aqi-theme="high"] {
+  --vayu-bg: #fdf2f2;
+  --vayu-bg-glow: radial-gradient(ellipse 80% 45% at 50% 0%, rgba(220, 38, 38, 0.1), transparent 70%);
+  --vayu-surface: #ffffff;
+  --vayu-surface-muted: #fde2e2;
+  --vayu-border: #f5bcbc;
+  --vayu-ink: #3b0808;
+  --vayu-ink-muted: #7c3030;
+  --vayu-accent: #dc2626;
+  --vayu-accent-hover: #b91c1c;
+  --vayu-accent-ink: #ffffff;
+  --vayu-hero-from: #7f1d1d;
+  --vayu-hero-to: #b91c1c;
+  --vayu-hero-ink: #fef2f2;
+  --vayu-hero-muted: #fecaca;
+  --vayu-hero-border: rgba(254, 202, 202, 0.26);
+  --vayu-ticker-bg: #7f1d1d;
+  --vayu-ticker-border: #991b1b;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--vayu-bg);
+  background-image: var(--vayu-bg-glow);
+  background-repeat: no-repeat;
+  color: var(--vayu-ink);
+  transition: background-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth GPU-composited running marquee for Dangerous Cities bar */
+@keyframes vayu-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.vayu-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: vayu-marquee 34s linear infinite;
+}
+
+.vayu-marquee-container:hover .vayu-marquee-track,
+.vayu-marquee-container:focus-within .vayu-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Clean scrollbar for horizontal city strip */
+.city-strip-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.city-strip-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.city-strip-scroll::-webkit-scrollbar-thumb {
+  background: var(--vayu-border);
+  border-radius: 9999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vayu-marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
